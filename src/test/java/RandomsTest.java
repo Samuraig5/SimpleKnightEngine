@@ -22,10 +22,6 @@ public class RandomsTest {
 
         // Test case 2: Event should never happen with 0% likelihood
         assertFalse(Randoms.decider(0.0f));
-
-        // Test case 3: Event should sometimes happen with 50% likelihood
-        boolean result = Randoms.decider(0.5f);
-        assertTrue(result || !result); // True or False
     }
 
     @Test
