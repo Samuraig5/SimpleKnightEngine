@@ -1,9 +1,13 @@
-package src.Math;
+package MathHelper;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 
 public class Randoms
 {
+    private static final Logger logger = LoggerFactory.getLogger(Randoms.class);
     private static final Random random = new Random();
 
     /**
@@ -36,6 +40,7 @@ public class Randoms
     public static boolean decider(float likelihoodPercentage)
     {
         if (likelihoodPercentage < 0.0f || likelihoodPercentage > 1.0f) {
+            logger.debug("Percentage must be between 0.0 and 1.0");
             throw new IllegalArgumentException("Percentage must be between 0.0 and 1.0");
         }
         return random.nextFloat() < likelihoodPercentage;

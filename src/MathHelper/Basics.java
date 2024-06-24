@@ -1,7 +1,12 @@
-package src.Math;
+package MathHelper;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Basics
 {
+    private static final Logger logger = LoggerFactory.getLogger(Basics.class);
+
     /**
      * Hard clamps the value between min and mix.
      * @param value value to be clamped
@@ -30,6 +35,7 @@ public class Basics
      */
     public static String indexToLetter(int n) {
         if (n < 0 || n > 25) {
+            logger.debug("invalid index");
             return "Invalid index";
         }
         return String.valueOf((char) ('a' + n));
@@ -44,6 +50,7 @@ public class Basics
      */
     public static int letterToIndex(char letter) {
         if (letter < 'a' || letter > 'z') {
+            logger.debug("invalid letter");
             return -1;
         }
         return letter - 'a';
