@@ -1,4 +1,4 @@
-package Main;
+import MathHelper.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class Main
         List<Double> res = new ArrayList<>();
         for (int i = 0; i < 50; i++)
         {
-            double newVal = MathHelper.Randoms.range(0,10,true);
+            double newVal = Randoms.range(0,10,true);
             res.add(newVal);
         }
 
