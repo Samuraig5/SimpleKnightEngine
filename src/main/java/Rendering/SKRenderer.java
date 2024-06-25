@@ -4,11 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 
-public class Renderer extends JPanel implements ImageObserver
+public class SKRenderer extends JPanel implements ImageObserver
 {
-    public Renderer()
+    public SKRenderer()
     {
-
+        repaint();
+        revalidate();
     }
 
     @Override
