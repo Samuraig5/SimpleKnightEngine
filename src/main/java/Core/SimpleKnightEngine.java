@@ -1,17 +1,20 @@
 package Core;
 
-import Rendering.SKRenderer;
+import Rendering.ResourceManager.ImageManager;
+import Rendering.ResourceManager.ResourceManager;
+import Rendering.SKRenderer.SKRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class SimpleKnightEngine
+public abstract class SimpleKnightEngine
 {
     private static final Logger logger = LoggerFactory.getLogger(SimpleKnightEngine.class);
     protected final JFrame frame;
     protected final SKRenderer renderer;
+    protected final ImageManager imageManager = new ImageManager();
 
     public SimpleKnightEngine(String programName)
     {
@@ -50,5 +53,12 @@ public class SimpleKnightEngine
         frame.add(renderer);
         renderer.requestFocusInWindow();
         frame.setVisible(true);
+
+        setUp();
     }
+
+    public abstract void setUp();
+
+    public ImageManager getImageManager() {return imageManager;}
+    public SKRenderer getRenderer() {return renderer;}
 }

@@ -1,5 +1,9 @@
 package Rendering.ResourceManager;
 
+import Core.Settings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
@@ -14,11 +18,15 @@ public class ImageManager extends ResourceManager<Image>
         {
             return ImageIO.read(new File(filepath));
         }
-        catch (IOException e)
+        catch (IOException e1)
         {
-            logger.debug("IOException when trying to open: " + filepath);
-            System.err.println("Unable to load '" + filepath + "' from files!");
+            if (filepath.equals(Settings.missingTextureSprite))
+            {
+                logger.error("CRITICAL ERROR: UNABLE TO LOAD 'MISSING TEXTURE'!");
+                return null;
+            }
+            logger.debug("IOException when trying to open: " + filepath + ". Opening 'Missing Texture' instead ");
+            return getResource(Settings.missingTextureSprite);
         }
-        return null;
     }
 }

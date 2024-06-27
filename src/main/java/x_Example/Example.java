@@ -6,6 +6,6 @@ public class Example
 {
     public static void main(String[] args)
     {
-        new SimpleKnightEngine("x_Example");
+        new ExampleEngine("x_Example");
     }
 }
