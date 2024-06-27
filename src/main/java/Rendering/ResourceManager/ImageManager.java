@@ -23,6 +23,7 @@ public class ImageManager extends ResourceManager<Image>
             if (filepath.equals(Settings.missingTextureSprite))
             {
                 logger.error("CRITICAL ERROR: UNABLE TO LOAD 'MISSING TEXTURE'!");
+                System.exit(0);
                 return null;
             }
             logger.debug("IOException when trying to open: " + filepath + ". Opening 'Missing Texture' instead ");
