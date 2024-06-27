@@ -1,1 +1,1 @@
-# SimpleKnightEngine
+# Core.SimpleKnightEngine

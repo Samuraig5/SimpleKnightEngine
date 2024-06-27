@@ -1,6 +1,5 @@
+package Core;
 
-import Rendering.FrameState;
-import Core.Settings;
 import Rendering.SKRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
