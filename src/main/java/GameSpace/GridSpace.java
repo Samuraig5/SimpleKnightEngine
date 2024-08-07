@@ -1,5 +1,6 @@
 package GameSpace;
 
+import GameSpace.Vector.GridBoundVector;
 import GameSpace.Vector.GridVector;
 import MathHelper.Randoms;
 import org.slf4j.Logger;
@@ -33,12 +34,12 @@ public class GridSpace
         return size;
     }
 
-    public GridVector getRandomPosition()
+    public GridBoundVector getRandomPosition()
     {
         int x = (int) Randoms.range(0, size.x()-1,true);
         int y = (int) Randoms.range(0, size.y()-1,true);
         int z = (int) Randoms.range(0, size.z()-1,true);
         logger.debug("Generated random position: (" + x + ", " + y + ", " + z + ").");
-        return new GridVector(x,y,z);
+        return new GridBoundVector(this,x,y,z);
     }
 }

@@ -18,8 +18,8 @@ public class BrownianMovement extends GameObject
     {
         super.update();
 
-        FreeVector randomMovement = new FreeVector();
-        randomMovement.randomize(-5,5);
+        GridVector randomMovement = new GridVector();
+        randomMovement.randomize(-1,1);
         vector.add(randomMovement);
     }
 }

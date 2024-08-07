@@ -1,5 +1,6 @@
 package x_Example;
 
+import GameSpace.Vector.GridBoundVector;
 import Objects.GameObject;
 import Core.Settings;
 import Core.SimpleKnightEngine;
@@ -20,7 +21,7 @@ public class ExampleScene extends Scene
     public ExampleScene(SimpleKnightEngine engine)
     {
         super(engine);
-        GridVector gridSize = new GridVector(7,7);
+        GridVector gridSize = new GridVector(100,100);
         grid = new GridSpace(gridSize);
 
         Image i = engine.getImageManager().getResource(Settings.missingTextureSprite);
@@ -28,8 +29,8 @@ public class ExampleScene extends Scene
         MapIcon mapIcon = new MapIcon(sprite,'?',Color.lightGray);
 
         for (int j = 0; j < 3; j++) {
-            GridVector gridPos = grid.getRandomPosition();
-            GameObject gameObject = new GameObject(mapIcon, gridPos);
+            GridBoundVector gridPos = grid.getRandomPosition();
+            GameObject gameObject = new BrownianMovement(mapIcon, gridPos);
             renderables.add(gameObject);
             updatables.add(gameObject);
         }
@@ -37,7 +38,7 @@ public class ExampleScene extends Scene
         Double y = Randoms.range(0,1000,false);
 
         FreeVector freePos = new FreeVector(x, y);
-        GameObject gameObject = new BrownianMovement(mapIcon, freePos);
+        GameObject gameObject = new GameObject(mapIcon, freePos);
         renderables.add(gameObject);
         updatables.add(gameObject);
     }

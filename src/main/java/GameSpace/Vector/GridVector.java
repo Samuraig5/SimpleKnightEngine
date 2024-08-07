@@ -54,9 +54,11 @@ public class GridVector extends Vector<Integer>
 
     @Override
     public void add(Vector<?> vector) {
-        coordinates[0] += (Integer) vector.x();
-        coordinates[1] += (Integer) vector.y();
-        coordinates[2] += (Integer) vector.z();
+        int x = coordinates[0] + (Integer) vector.x();
+        int y = coordinates[1] + (Integer) vector.y();
+        int z = coordinates[2] + (Integer) vector.z();
+
+        set(x,y,z);
     }
 
     @Override

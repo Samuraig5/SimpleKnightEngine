@@ -49,9 +49,11 @@ public class FreeVector extends Vector<Double> {
 
     @Override
     public void add(Vector<?> vector) {
-        coordinates[0] += (Double) vector.x();
-        coordinates[1] += (Double) vector.y();
-        coordinates[2] += (Double) vector.z();
+        double x = coordinates[0] + (Double) vector.x();
+        double y = coordinates[1] + (Double) vector.y();
+        double z = coordinates[2] + (Double) vector.z();
+
+        set(x,y,z);
     }
 
     @Override
