@@ -5,11 +5,7 @@ import MathHelper.Randoms;
 
 public class GridVector extends Vector<Integer>
 {
-    private final Integer[] coordinates = new Integer[3];
-
-    public GridVector(Integer x, Integer y,Integer z){set(x,y,z);}
-    public GridVector(Integer x, Integer y){set(x,y,0);}
-    public GridVector(){set(0,0,0);}
+    private final Integer[] coordinates = {0,0,0};
 
     @Override
     public Integer zero() {
@@ -45,11 +41,12 @@ public class GridVector extends Vector<Integer>
 
     @Override
     public FreeVector getRenderCoordinates() {
-
-        return new FreeVector(
+        FreeVector renderVector = new FreeVector();
+        renderVector.set(
                 (double) x()*Settings.defaultGridSize,
                 (double) y()*Settings.defaultGridSize,
                 (double) z()*Settings.defaultGridSize);
+        return renderVector;
     }
 
     @Override

@@ -4,6 +4,7 @@ import Core.SimpleKnightEngine;
 import Objects.GameObject;
 import Objects.Renderable;
 import Objects.Updatable;
+import ch.qos.logback.core.pattern.LiteralConverter;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -24,14 +25,16 @@ public abstract class Scene
     }
     public void drawRenderables(Graphics g)
     {
-        for (Renderable renderable:renderables)
+        List<Renderable> safeRenderables = new ArrayList<>(renderables);
+        for (Renderable renderable:safeRenderables)
         {
             renderable.render(g,this);
         }
     }
     protected void updateUpdateables()
     {
-        for (Updatable updatable:updatables)
+        List<Updatable> safeUpdatables = new ArrayList<>(updatables);
+        for (Updatable updatable:safeUpdatables)
         {
             updatable.update();
         }

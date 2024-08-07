@@ -9,7 +9,7 @@ import java.util.Base64;
 
 public class GridBoundVector extends GridVector
 {
-    private static final Logger logger = LoggerFactory.getLogger(GridVector.class);
+    private static final Logger logger = LoggerFactory.getLogger(GridBoundVector.class);
 
     private final GridSpace gridSpace;
 
@@ -32,20 +32,13 @@ public class GridBoundVector extends GridVector
     @Override
     public void set(Integer x, Integer y, Integer z)
     {
-        if (gridSpace != null)
-        {
-            int xMax = gridSpace.getSize().x();
-            int yMax = gridSpace.getSize().y();
-            int zMax = gridSpace.getSize().z();
+        int xMax = Math.max(0, gridSpace.getSize().x()-1);
+        int yMax = Math.max(0, gridSpace.getSize().y()-1);
+        int zMax = Math.max(0, gridSpace.getSize().z()-1);
 
-            x = Basics.clamp(x,0,xMax-1);
-            y = Basics.clamp(y,0,yMax-1);
-            z = Basics.clamp(z,0,zMax-1);
-        }
-        else
-        {
-            logger.info("gridSpace is null");
-        }
+        x = Basics.clamp(x,0,xMax);
+        y = Basics.clamp(y,0,yMax);
+        z = Basics.clamp(z,0,zMax);
 
         super.set(x, y, z);
     }

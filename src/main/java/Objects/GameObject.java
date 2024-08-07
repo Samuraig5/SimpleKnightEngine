@@ -10,13 +10,24 @@ import java.awt.*;
 
 public class GameObject implements Updatable, Renderable
 {
-    protected final Vector<?> vector;
+    protected final Scene scene;
+    private final Vector<?> position;
     protected final MapIcon mapIcon;
 
-    public GameObject(MapIcon mapIcon, Vector<?> vector)
+    public GameObject(Scene scene, MapIcon mapIcon, Vector<?> position)
     {
+        this.scene = scene;
         this.mapIcon = mapIcon;
-        this.vector = vector;
+        this.position = position;
+        setPosition(position);
+    }
+
+    public void setPosition(Vector<?> newPosition)
+    {
+        position.copy(newPosition);
+    }
+    public Vector<?> getPosition() {
+        return position;
     }
 
     @Override
@@ -24,7 +35,7 @@ public class GameObject implements Updatable, Renderable
     {
         if (!mapIcon.hasSprite()) {return;}
         Image img = mapIcon.getSprite().getImage();
-        FreeVector renderCoords = vector.getRenderCoordinates();
+        FreeVector renderCoords = position.getRenderCoordinates();
 
         double zoom = scene.getEngine().getRenderer().getZoomLevel();
         int gridSize = (int) Math.floor(Settings.defaultGridSize * zoom);

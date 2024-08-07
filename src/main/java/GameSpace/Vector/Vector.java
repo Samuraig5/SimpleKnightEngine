@@ -4,8 +4,6 @@ import MathHelper.Basics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.PortUnreachableException;
-
 public abstract class Vector<T extends Number & Comparable<T>>
 {
     private static final Logger logger = LoggerFactory.getLogger(Vector.class);
@@ -18,6 +16,15 @@ public abstract class Vector<T extends Number & Comparable<T>>
             coords[i] = Basics.clamp(coords[i], min, max);
         }
         set(coords[0], coords[1], coords[2]);
+    }
+
+    /**
+     * Overrides this vector to match the source vector.
+     * @param source source vector
+     */
+    public void copy(Vector<?> source)
+    {
+        set((T) source.x(), (T) source.y(), (T) source.z());
     }
 
     /**
@@ -37,6 +44,10 @@ public abstract class Vector<T extends Number & Comparable<T>>
      * @param z z component
      */
     public abstract void set(T x, T y, T z);
+    public void set(T x, T y)
+    {
+        set(x, y, zero());
+    }
 
     /**
      * @return X component of the coordinate.

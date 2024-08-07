@@ -4,11 +4,7 @@ import MathHelper.Randoms;
 
 public class FreeVector extends Vector<Double> {
 
-    private final Double[] coordinates = new Double[3];
-
-    public FreeVector(Double x,Double y,Double z) {set(x,y,z);}
-    public FreeVector(Double x,Double y) {set(x,y,0d);}
-    public FreeVector() {set(0d,0d,0d);}
+    private final Double[] coordinates = {0d,0d,0d};
 
     @Override
     public Double zero() {
@@ -44,7 +40,9 @@ public class FreeVector extends Vector<Double> {
 
     @Override
     public FreeVector getRenderCoordinates() {
-        return new FreeVector(x(), y(), z());
+        FreeVector renderVector = new FreeVector();
+        renderVector.set(x(), y(), z());
+        return renderVector;
     }
 
     @Override

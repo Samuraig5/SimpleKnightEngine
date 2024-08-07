@@ -14,14 +14,30 @@ public class GridSpace
 
     /**
      * Creates a grid of cells given a size.
-     * Will use the X and Y components of the given coordinates as the number of cells in that dimension.
-     * Casts non int numbers to integers.
+     * It takes a GridVector as an input.
+     * The scale of each component of the vector determines the size of the corresponding dimension.
+     * If the input vector contains non integer numbers, they are cast to integer numbers.
+     * Will replace any numbers below '1' with '1' to ensure that each dimension has atleast a size of one.
+     *
      * @param size X component: number of columns / Y component: number of rows.
      */
     public GridSpace(GridVector size)
     {
+        int x = Math.max(1,size.x());
+        int y = Math.max(1,size.y());
+        int z = Math.max(1,size.z());
+
+        size.set(x,y,z);
+
         this.size = size;
         cells = new Cell[size.x()][size.y()][size.z()];
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < y; j++) {
+                for (int k = 0; k < z; k++) {
+                    cells[i][j][k] = new Cell();
+                }
+            }
+        }
     }
 
     public Cell[][][] getCells()
