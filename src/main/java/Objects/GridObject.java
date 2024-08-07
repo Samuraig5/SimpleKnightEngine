@@ -11,8 +11,17 @@ import org.slf4j.LoggerFactory;
 
 public class GridObject extends GameObject
 {
+    /**
+     * Logger used for logging
+     */
     private static final Logger logger = LoggerFactory.getLogger(GridBoundVector.class);
+    /**
+     * GridSpace the GridObject is inside of
+     */
     protected final GridSpace gridSpace;
+    /**
+     * Cell the GridObject is currently inside of
+     */
     protected Cell myCell;
 
     public GridObject(GridSpace gridSpace, Scene scene, MapIcon mapIcon, Vector<?> vector) {
@@ -21,6 +30,11 @@ public class GridObject extends GameObject
         setPosition(vector);
     }
 
+    /**
+     * @inheritDoc
+     * Before any of the normal behavior of a GameObject, aborts the update
+     * of the GridObject if it is not assignedto any gridSpace
+     */
     @Override
     public void update() {
         if (gridSpace == null)
@@ -31,6 +45,11 @@ public class GridObject extends GameObject
         super.update();
     }
 
+    /**
+     * @inheritDoc
+     *  On top of the normal behavior of a GameObject,
+     *  also updates the cell the GridObject is leaving and the cell the GridObject is moving into.
+     */
     @Override
     public void setPosition(Vector<?> newPosition)
     {

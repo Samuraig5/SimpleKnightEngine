@@ -4,6 +4,9 @@ import MathHelper.Randoms;
 
 public class FreeVector extends Vector<Double> {
 
+    /**
+     * Components of the Vector, stored as doubles
+     */
     private final Double[] coordinates = {0d,0d,0d};
 
     @Override

@@ -8,8 +8,19 @@ import org.slf4j.LoggerFactory;
 
 public class GridSpace
 {
+    /**
+     * Logger for logging
+     */
     private static final Logger logger = LoggerFactory.getLogger(GridSpace.class);
+    /**
+     * Three-dimensional array holding the cells of this GridSpace.
+     * In a two-dimensional plane, the third dimension has a size of one.
+     */
     private final Cell[][][] cells;
+    /**
+     * Vector representing the size of the GridSpace.
+     * Each component corresponds to the size of its associated dimension.
+     */
     private final GridVector size;
 
     /**
@@ -40,22 +51,32 @@ public class GridSpace
         }
     }
 
+    /**
+     * @return Three-dimensional array containing the cells of the GridSpace.
+     */
     public Cell[][][] getCells()
     {
         return cells;
     }
 
+    /**
+     * @return size of the GridSpace
+     */
     public GridVector getSize()
     {
         return size;
     }
 
+    /**
+     * Generates a random position contained within the GridSpace and returns it as a GridBoundVector.
+     * @return GridBoundVector of the random position
+     */
     public GridBoundVector getRandomPosition()
     {
         int x = (int) Randoms.range(0, size.x()-1,true);
         int y = (int) Randoms.range(0, size.y()-1,true);
         int z = (int) Randoms.range(0, size.z()-1,true);
         logger.debug("Generated random position: (" + x + ", " + y + ", " + z + ").");
-        return new GridBoundVector(this,x,y,z);
+        return new GridBoundVector(this);
     }
 }

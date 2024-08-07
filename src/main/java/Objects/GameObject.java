@@ -10,8 +10,18 @@ import java.awt.*;
 
 public class GameObject implements Updatable, Renderable
 {
+    /**
+     * Scene the GameObject is in
+     */
     protected final Scene scene;
+    /**
+     * Position of the GameObject
+     */
     private final Vector<?> position;
+    /**
+     * MapIcon of the GameObject.
+     * The Sprite or Icon of the MapIcon is used to render the object.
+     */
     protected final MapIcon mapIcon;
 
     public GameObject(Scene scene, MapIcon mapIcon, Vector<?> position)
@@ -22,10 +32,18 @@ public class GameObject implements Updatable, Renderable
         setPosition(position);
     }
 
+    /**
+     * Set the GameObject's position to the new position
+     * @param newPosition new position for the GameObject
+     */
     public void setPosition(Vector<?> newPosition)
     {
         position.copy(newPosition);
     }
+
+    /**
+     * @return current position of the GameObject
+     */
     public Vector<?> getPosition() {
         return position;
     }

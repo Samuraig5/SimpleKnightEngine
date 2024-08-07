@@ -12,10 +12,26 @@ import java.awt.*;
 
 public abstract class SimpleKnightEngine
 {
+    /**
+     * Logger used for logging
+     */
     private static final Logger logger = LoggerFactory.getLogger(SimpleKnightEngine.class);
+    /**
+     * The window the program runs in
+     */
     protected final JFrame frame;
+    /**
+     * The main rendering class
+     */
     protected final SKRenderer renderer;
+    /**
+     * The clock sending update ticks
+     */
     protected final GameClock gameClock;
+    /**
+     * Manager for images, making sure that a specific image is only loaded once.
+     * Helps to cut down on I/O time
+     */
     protected final ImageManager imageManager = new ImageManager();
 
     public SimpleKnightEngine(String programName)
@@ -61,8 +77,27 @@ public abstract class SimpleKnightEngine
         setUp();
     }
 
+    /**
+     * Called after the constructor is finished.
+     * Scenes should be created and assigned here.
+     */
     public abstract void setUp();
+
+    /**
+     * Returns the imageManager
+     * @return the imageManager of the program
+     */
     public ImageManager getImageManager() {return imageManager;}
+
+    /**
+     * Returns the renderer
+     * @return the renderer of the program
+     */
     public SKRenderer getRenderer() {return renderer;}
+
+    /**
+     * Returns the gameClock
+     * @return the gameClock of the program
+     */
     public GameClock getGameClock() {return gameClock;}
 }

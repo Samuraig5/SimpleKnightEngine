@@ -5,6 +5,9 @@ import MathHelper.Randoms;
 
 public class GridVector extends Vector<Integer>
 {
+    /**
+     * Component of the vector, stored as integers
+     */
     private final Integer[] coordinates = {0,0,0};
 
     @Override

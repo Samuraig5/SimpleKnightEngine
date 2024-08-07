@@ -6,17 +6,10 @@ import org.slf4j.LoggerFactory;
 
 public abstract class Vector<T extends Number & Comparable<T>>
 {
+    /**
+     * Logger used for logging
+     */
     private static final Logger logger = LoggerFactory.getLogger(Vector.class);
-
-    public void clamp(T min, T max)
-    {
-        T[] coords = toArray();
-        for (int i = 0; i < 3; i++)
-        {
-            coords[i] = Basics.clamp(coords[i], min, max);
-        }
-        set(coords[0], coords[1], coords[2]);
-    }
 
     /**
      * Overrides this vector to match the source vector.
@@ -44,6 +37,12 @@ public abstract class Vector<T extends Number & Comparable<T>>
      * @param z z component
      */
     public abstract void set(T x, T y, T z);
+
+    /**
+     * Sets the x and y component of a 2D vector. The z component is set to 0.
+     * @param x x component
+     * @param y y component
+     */
     public void set(T x, T y)
     {
         set(x, y, zero());
@@ -65,6 +64,7 @@ public abstract class Vector<T extends Number & Comparable<T>>
     public abstract T z();
 
     /**
+     * Returns the coordinates at which this vector should be rendered at.
      * @return coordinates of the render position. NOT scaled by zoom level
      */
     public abstract FreeVector getRenderCoordinates();

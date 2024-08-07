@@ -8,7 +8,13 @@ import java.util.Vector;
 
 public class Randoms
 {
+    /**
+     * Logger used for logging
+     */
     private static final Logger logger = LoggerFactory.getLogger(Randoms.class);
+    /**
+     * Java's inbuilt random number generator
+     */
     private static final Random random = new Random();
 
     /**

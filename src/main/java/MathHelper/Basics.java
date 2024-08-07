@@ -5,6 +5,9 @@ import org.slf4j.LoggerFactory;
 
 public class Basics
 {
+    /**
+     * Logger used for logging
+     */
     private static final Logger logger = LoggerFactory.getLogger(Basics.class);
 
     /**
