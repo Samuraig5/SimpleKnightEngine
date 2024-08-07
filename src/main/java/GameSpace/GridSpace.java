@@ -1,15 +1,14 @@
 package GameSpace;
 
+import MathHelper.Randoms;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.awt.*;
 
 public class GridSpace
 {
     private static final Logger logger = LoggerFactory.getLogger(GridSpace.class);
     private final Cell[][][] cells;
-    private final Coordinates<? extends Number> size;
+    private final GridCoordinates size;
 
     /**
      * Creates a grid of cells given a size.
@@ -17,10 +16,10 @@ public class GridSpace
      * Casts non int numbers to integers.
      * @param size X component: number of columns / Y component: number of rows.
      */
-    public GridSpace(Coordinates<? extends Number> size)
+    public GridSpace(GridCoordinates size)
     {
         this.size = size;
-        cells = new Cell[(int) size.x()][(int) size.y()][(int) size.z()];
+        cells = new Cell[size.x()][size.y()][size.z()];
     }
 
     public Cell[][][] getCells()
@@ -28,8 +27,17 @@ public class GridSpace
         return cells;
     }
 
-    public Coordinates<? extends Number> getSize()
+    public GridCoordinates getSize()
     {
         return size;
+    }
+
+    public GridCoordinates getRandomPosition()
+    {
+        int x = (int) Randoms.range(0, size.x()-1,true);
+        int y = (int) Randoms.range(0, size.y()-1,true);
+        int z = (int) Randoms.range(0, size.z()-1,true);
+        logger.debug("Generated random position: (" + x + ", " + y + ", " + z + ").");
+        return new GridCoordinates(x,y,z);
     }
 }

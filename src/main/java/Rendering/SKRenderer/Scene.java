@@ -7,6 +7,7 @@ import java.awt.*;
 public abstract class Scene
 {
     protected SimpleKnightEngine engine;
+
     public Scene(SimpleKnightEngine engine)
     {
         this.engine = engine;

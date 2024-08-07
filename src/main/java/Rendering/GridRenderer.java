@@ -1,7 +1,6 @@
 package Rendering;
 
 import Core.Settings;
-import GameSpace.Coordinates;
 import GameSpace.GridSpace;
 import Rendering.SKRenderer.Scene;
 
@@ -11,8 +10,8 @@ public class GridRenderer
 {
     public static void drawGrid(Graphics g, Scene scene, GridSpace grid)
     {
-        int x = (int) grid.getSize().x();
-        int y = (int) grid.getSize().y();
+        int x = grid.getSize().x();
+        int y = grid.getSize().y();
 
         double zoom = scene.getEngine().getRenderer().getZoomLevel();
         int gridSize = (int) Math.floor(Settings.defaultGridSize * zoom);
