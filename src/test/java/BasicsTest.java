@@ -1,11 +1,12 @@
 import MathHelper.Basics;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BasicsTest {
     @Test
     public void testClampInteger() {
-        assertEquals(5, Basics.clamp(5, 0, 10));
+        Assertions.assertEquals(5, Basics.clamp(5, 0, 10));
         assertEquals(0, Basics.clamp(-5, 0, 10));
         assertEquals(10, Basics.clamp(15, 0, 10));
     }
