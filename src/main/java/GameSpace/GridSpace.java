@@ -9,6 +9,7 @@ public class GridSpace
 {
     private static final Logger logger = LoggerFactory.getLogger(GridSpace.class);
     private final Cell[][][] cells;
+    private final Coordinates<? extends Number> size;
 
     /**
      * Creates a grid of cells given a size.
@@ -18,10 +19,17 @@ public class GridSpace
      */
     public GridSpace(Coordinates<? extends Number> size)
     {
+        this.size = size;
         cells = new Cell[(int) size.x()][(int) size.y()][(int) size.z()];
     }
 
-    public Cell[][][] getCells() {
+    public Cell[][][] getCells()
+    {
         return cells;
+    }
+
+    public Coordinates<? extends Number> getSize()
+    {
+        return size;
     }
 }

@@ -12,4 +12,8 @@ public abstract class Scene
         this.engine = engine;
     }
     public abstract void drawScene(Graphics g);
+
+    public SimpleKnightEngine getEngine() {
+        return engine;
+    }
 }
