@@ -1,16 +1,16 @@
 import Core.Settings;
-import GameSpace.FreeCoordinates;
-import GameSpace.GridCoordinates;
+import GameSpace.Vector.FreeVector;
+import GameSpace.Vector.GridVector;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class CoordinatesTest
+class VectorTest
 {
     @Test
     void test2DGridCoordinatesInitialization() {
-        GridCoordinates coords = new GridCoordinates(1, 2);
+        GridVector coords = new GridVector(1, 2);
         assertEquals(1, coords.x());
         assertEquals(2, coords.y());
         assertEquals(0, coords.z());
@@ -21,7 +21,7 @@ class CoordinatesTest
 
     @Test
     void test3DGridCoordinatesInitialization() {
-        GridCoordinates coords = new GridCoordinates(1, 2, 3);
+        GridVector coords = new GridVector(1, 2, 3);
         assertEquals(1, coords.x());
         assertEquals(2, coords.y());
         assertEquals(3, coords.z());
@@ -32,8 +32,8 @@ class CoordinatesTest
 
     @Test
     void test3DGridCoordinatesToRender() {
-        GridCoordinates coords = new GridCoordinates(1, 2, 3);
-        FreeCoordinates renderCoords = coords.getRenderCoordinates();
+        GridVector coords = new GridVector(1, 2, 3);
+        FreeVector renderCoords = coords.getRenderCoordinates();
 
         assertEquals(1 * Settings.defaultGridSize, renderCoords.x());
         assertEquals(2 * Settings.defaultGridSize, renderCoords.y());
@@ -42,7 +42,7 @@ class CoordinatesTest
 
     @Test
     void test2DFreeCoordinatesInitialization() {
-        FreeCoordinates coords = new FreeCoordinates(1.5, 2.5);
+        FreeVector coords = new FreeVector(1.5, 2.5);
         assertEquals(1.5, coords.x());
         assertEquals(2.5, coords.y());
         assertEquals(0, coords.z());
@@ -53,7 +53,7 @@ class CoordinatesTest
 
     @Test
     void test3DFreeCoordinatesInitialization() {
-        FreeCoordinates coords = new FreeCoordinates(1.5, 2.5, 3.5);
+        FreeVector coords = new FreeVector(1.5, 2.5, 3.5);
         assertEquals(1.5, coords.x());
         assertEquals(2.5, coords.y());
         assertEquals(3.5, coords.z());
@@ -64,8 +64,8 @@ class CoordinatesTest
 
     @Test
     void test3DFreeCoordinatesToRender() {
-        FreeCoordinates coords = new FreeCoordinates(1.5, 2.5, 3.5);
-        FreeCoordinates renderCoords = coords.getRenderCoordinates();
+        FreeVector coords = new FreeVector(1.5, 2.5, 3.5);
+        FreeVector renderCoords = coords.getRenderCoordinates();
 
         assertEquals(1.5, renderCoords.x());
         assertEquals(2.5, renderCoords.y());

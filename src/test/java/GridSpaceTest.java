@@ -1,5 +1,4 @@
-import GameSpace.FreeCoordinates;
-import GameSpace.GridCoordinates;
+import GameSpace.Vector.GridVector;
 import GameSpace.GridSpace;
 import MathHelper.Randoms;
 import org.junit.jupiter.api.Test;
@@ -10,7 +9,7 @@ public class GridSpaceTest
 {
     @Test
     void testGridSpaceInitialization2D() {
-        GridCoordinates size = new GridCoordinates(3, 5);
+        GridVector size = new GridVector(3, 5);
         GridSpace grid = new GridSpace(size);
 
         assertEquals(3, grid.getCells().length);
@@ -20,7 +19,7 @@ public class GridSpaceTest
 
     @Test
     void testGridSpaceInitialization3D() {
-        GridCoordinates size = new GridCoordinates(3, 5, 12);
+        GridVector size = new GridVector(3, 5, 12);
         GridSpace grid = new GridSpace(size);
 
         assertEquals(3, grid.getCells().length);
@@ -37,10 +36,10 @@ public class GridSpaceTest
             int y = (int) Randoms.range(0, 100, true);
             int z = (int) Randoms.range(0, 100, true);
 
-            GridCoordinates size = new GridCoordinates(x, y, z);
+            GridVector size = new GridVector(x, y, z);
             GridSpace grid = new GridSpace(size);
 
-            GridCoordinates randomPosition = grid.getRandomPosition();
+            GridVector randomPosition = grid.getRandomPosition();
 
             assertNotNull(randomPosition);
             assertTrue(randomPosition.x() >= 0 && randomPosition.x() < x);

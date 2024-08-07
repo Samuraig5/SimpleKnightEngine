@@ -11,4 +11,5 @@ public class Settings
     public static final Rectangle windowSize = new Rectangle(1800, 1000);
     public static final String missingTextureSprite = "src/main/resources/MissingTexture.jpg";
     public static final double defaultGridSize = 100;
+    public static final int tickSpeed = 10;
 }

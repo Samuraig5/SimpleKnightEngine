@@ -2,6 +2,7 @@ package x_Example;
 
 import Core.SimpleKnightEngine;
 import Rendering.ResourceManager.ImageManager;
+import Rendering.SKRenderer.Scene;
 
 public class ExampleEngine extends SimpleKnightEngine
 {
@@ -13,6 +14,9 @@ public class ExampleEngine extends SimpleKnightEngine
     @Override
     public void setUp()
     {
-        renderer.setScene(new ExampleScene(this));
+        Scene exampleScene = new ExampleScene(this);
+        renderer.setScene(exampleScene);
+        gameClock.setScene(exampleScene);
+        gameClock.startClock();
     }
 }

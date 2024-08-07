@@ -1,4 +1,4 @@
-package Core;
+package Objects;
 
 public interface Updatable
 {

@@ -1,21 +1,22 @@
-package Core;
+package Objects;
 
-import GameSpace.Coordinates;
-import GameSpace.FreeCoordinates;
+import Core.Settings;
+import GameSpace.Vector.Vector;
+import GameSpace.Vector.FreeVector;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 
 import java.awt.*;
 
-public class GameObject implements Updatable, Rednerable
+public class GameObject implements Updatable, Renderable
 {
-    private final Coordinates<?> coordinates;
-    private final MapIcon mapIcon;
+    protected final Vector<?> vector;
+    protected final MapIcon mapIcon;
 
-    public GameObject(MapIcon mapIcon, Coordinates<?> coordinates)
+    public GameObject(MapIcon mapIcon, Vector<?> vector)
     {
         this.mapIcon = mapIcon;
-        this.coordinates = coordinates;
+        this.vector = vector;
     }
 
     @Override
@@ -23,7 +24,7 @@ public class GameObject implements Updatable, Rednerable
     {
         if (!mapIcon.hasSprite()) {return;}
         Image img = mapIcon.getSprite().getImage();
-        FreeCoordinates renderCoords = coordinates.getRenderCoordinates();
+        FreeVector renderCoords = vector.getRenderCoordinates();
 
         double zoom = scene.getEngine().getRenderer().getZoomLevel();
         int gridSize = (int) Math.floor(Settings.defaultGridSize * zoom);

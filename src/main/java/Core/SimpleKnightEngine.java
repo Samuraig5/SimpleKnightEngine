@@ -1,5 +1,6 @@
 package Core;
 
+import Objects.GameClock;
 import Rendering.ResourceManager.ImageManager;
 import Rendering.ResourceManager.ResourceManager;
 import Rendering.SKRenderer.SKRenderer;
@@ -14,6 +15,7 @@ public abstract class SimpleKnightEngine
     private static final Logger logger = LoggerFactory.getLogger(SimpleKnightEngine.class);
     protected final JFrame frame;
     protected final SKRenderer renderer;
+    protected final GameClock gameClock;
     protected final ImageManager imageManager = new ImageManager();
 
     public SimpleKnightEngine(String programName)
@@ -54,11 +56,13 @@ public abstract class SimpleKnightEngine
         renderer.requestFocusInWindow();
         frame.setVisible(true);
 
+        gameClock = new GameClock();
+
         setUp();
     }
 
     public abstract void setUp();
-
     public ImageManager getImageManager() {return imageManager;}
     public SKRenderer getRenderer() {return renderer;}
+    public GameClock getGameClock() {return gameClock;}
 }
