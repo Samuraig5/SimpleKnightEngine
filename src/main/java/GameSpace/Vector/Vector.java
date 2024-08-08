@@ -65,9 +65,9 @@ public abstract class Vector<T extends Number & Comparable<T>>
 
     /**
      * Returns the coordinates at which this vector should be rendered at.
-     * @return coordinates of the render position. NOT scaled by zoom level
+     * @return coordinates of the render position scaled by zoom level
      */
-    public abstract FreeVector getRenderCoordinates();
+    public abstract FreeVector getRenderCoordinates(double zoom);
 
     /**
      * Adds the given vector to this vector

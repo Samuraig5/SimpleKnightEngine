@@ -53,15 +53,16 @@ public class GameObject implements Updatable, Renderable, Deletable
     {
         if (!mapIcon.hasSprite()) {return;}
         Image img = mapIcon.getSprite().getImage();
-        FreeVector renderCoords = position.getRenderCoordinates();
+        FreeVector renderCoords = position.getRenderCoordinates(scene.getZoomLevel());
 
-        double zoom = scene.getEngine().getRenderer().getZoomLevel();
-        int gridSize = (int) Math.floor(Settings.defaultGridSize * zoom);
+        double zoom = scene.getZoomLevel();
+        int gridSize = (int) Math.round(Settings.defaultGridSize * zoom);
 
-        int x = (int) Math.round(renderCoords.x()*zoom);
-        int y = (int) Math.round(renderCoords.y()*zoom);
+        int x = (int) Math.round(renderCoords.x());
+        int y = (int) Math.round(renderCoords.y());
 
-        g.drawImage(img, x, y, gridSize, gridSize, scene.getEngine().getRenderer());    }
+        g.drawImage(img, x, y, gridSize, gridSize, scene.getEngine().getRenderer());
+    }
 
     @Override
     public void update() {

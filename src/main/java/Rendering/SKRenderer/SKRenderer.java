@@ -6,13 +6,14 @@ import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.awt.image.ImageObserver;
 
 public class SKRenderer extends JPanel implements ImageObserver
 {
     private static final Logger logger = LoggerFactory.getLogger(SKRenderer.class);
     private Scene activeScene;
-    private double zoomLevel = 1;
 
     public SKRenderer()
     {
@@ -42,17 +43,18 @@ public class SKRenderer extends JPanel implements ImageObserver
         activeScene.drawScene(g);
     }
 
-    public void setScene(Scene s)
-    {
+    public void setScene(Scene s) {
+        if (activeScene != null) {
+            removeMouseListener(activeScene.getControls());
+            removeKeyListener(activeScene.getControls());
+            removeMouseWheelListener(activeScene.getControls());
+        }
+
         activeScene = s;
         logger.debug("Successfully set new scene");
-    }
 
-    public double getZoomLevel() {
-        return zoomLevel;
-    }
-
-    public void setZoomLevel(double zoomLevel) {
-        this.zoomLevel = zoomLevel;
+        addMouseListener(activeScene.getControls());
+        addKeyListener(activeScene.getControls());
+        addMouseWheelListener(activeScene.getControls());
     }
 }

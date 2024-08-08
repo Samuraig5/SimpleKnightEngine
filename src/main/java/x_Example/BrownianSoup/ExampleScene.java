@@ -1,5 +1,6 @@
 package x_Example.BrownianSoup;
 
+import GameInput.BasicMapControls;
 import GameSpace.Vector.GridBoundVector;
 import Objects.GameObject;
 import Core.Settings;
@@ -20,6 +21,9 @@ public class ExampleScene extends Scene
     public ExampleScene(SimpleKnightEngine engine)
     {
         super(engine);
+
+        controls = new BasicMapControls(this);
+
         GridVector gridSize = new GridVector();
         gridSize.set(100,100);
         grid = new GridSpace(gridSize);

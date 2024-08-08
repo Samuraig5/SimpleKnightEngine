@@ -13,8 +13,8 @@ public class GridRenderer
         int x = grid.getSize().x();
         int y = grid.getSize().y();
 
-        double zoom = scene.getEngine().getRenderer().getZoomLevel();
-        int gridSize = (int) Math.floor(Settings.defaultGridSize * zoom);
+        double zoom = scene.getZoomLevel();
+        int gridSize = (int) Math.round(Settings.defaultGridSize * zoom);
 
         for (int i = 0; i < x; i++)
         {

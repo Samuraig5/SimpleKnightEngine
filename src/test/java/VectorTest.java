@@ -10,7 +10,7 @@ class VectorTest
 {
     @Test
     void test2DGridCoordinatesInitialization() {
-        GridVector coords = new GridVector(1, 2);
+        GridVector coords = GridVector.create(1, 2, 0);
         assertEquals(1, coords.x());
         assertEquals(2, coords.y());
         assertEquals(0, coords.z());
@@ -21,7 +21,7 @@ class VectorTest
 
     @Test
     void test3DGridCoordinatesInitialization() {
-        GridVector coords = new GridVector(1, 2, 3);
+        GridVector coords = GridVector.create(1, 2, 3);
         assertEquals(1, coords.x());
         assertEquals(2, coords.y());
         assertEquals(3, coords.z());
@@ -32,8 +32,8 @@ class VectorTest
 
     @Test
     void test3DGridCoordinatesToRender() {
-        GridVector coords = new GridVector(1, 2, 3);
-        FreeVector renderCoords = coords.getRenderCoordinates();
+        GridVector coords = GridVector.create(1, 2, 3);
+        FreeVector renderCoords = coords.getRenderCoordinates(1);
 
         assertEquals(1 * Settings.defaultGridSize, renderCoords.x());
         assertEquals(2 * Settings.defaultGridSize, renderCoords.y());
@@ -42,7 +42,7 @@ class VectorTest
 
     @Test
     void test2DFreeCoordinatesInitialization() {
-        FreeVector coords = new FreeVector(1.5, 2.5);
+        FreeVector coords = FreeVector.create(1.5, 2.5, 0);
         assertEquals(1.5, coords.x());
         assertEquals(2.5, coords.y());
         assertEquals(0, coords.z());
@@ -53,7 +53,7 @@ class VectorTest
 
     @Test
     void test3DFreeCoordinatesInitialization() {
-        FreeVector coords = new FreeVector(1.5, 2.5, 3.5);
+        FreeVector coords = FreeVector.create(1.5, 2.5, 3.5);
         assertEquals(1.5, coords.x());
         assertEquals(2.5, coords.y());
         assertEquals(3.5, coords.z());
@@ -64,8 +64,8 @@ class VectorTest
 
     @Test
     void test3DFreeCoordinatesToRender() {
-        FreeVector coords = new FreeVector(1.5, 2.5, 3.5);
-        FreeVector renderCoords = coords.getRenderCoordinates();
+        FreeVector coords = FreeVector.create(1.5, 2.5, 3.5);
+        FreeVector renderCoords = coords.getRenderCoordinates(1);
 
         assertEquals(1.5, renderCoords.x());
         assertEquals(2.5, renderCoords.y());

@@ -2,6 +2,7 @@ package x_Example.GameOfLife;
 
 import Core.Settings;
 import Core.SimpleKnightEngine;
+import GameInput.BasicMapControls;
 import GameSpace.Cell;
 import GameSpace.GridSpace;
 import GameSpace.Vector.GridBoundVector;
@@ -41,6 +42,8 @@ public class GameOfLifeScene extends Scene
                 }
             }
         }
+
+        controls = new BasicMapControls(this);
     }
 
     @Override

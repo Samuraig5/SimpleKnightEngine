@@ -42,9 +42,9 @@ public class FreeVector extends Vector<Double> {
     }
 
     @Override
-    public FreeVector getRenderCoordinates() {
+    public FreeVector getRenderCoordinates(double zoom) {
         FreeVector renderVector = new FreeVector();
-        renderVector.set(x(), y(), z());
+        renderVector.set(x()*zoom, y()*zoom, z()*zoom);
         return renderVector;
     }
 
@@ -63,5 +63,12 @@ public class FreeVector extends Vector<Double> {
         for (int i = 0; i < 3; i++) {
             coordinates[i] = Randoms.range(min, max,false);
         }
+    }
+
+    public static FreeVector create(double x, double y, double z)
+    {
+        FreeVector vector = new FreeVector();
+        vector.set(x,y,z);
+        return vector;
     }
 }

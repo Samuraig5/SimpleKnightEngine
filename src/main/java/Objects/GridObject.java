@@ -1,13 +1,17 @@
 package Objects;
 
+import Core.Settings;
 import GameSpace.Cell;
 import GameSpace.GridSpace;
+import GameSpace.Vector.FreeVector;
 import GameSpace.Vector.GridBoundVector;
 import GameSpace.Vector.Vector;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.awt.*;
 
 public class GridObject extends GameObject
 {

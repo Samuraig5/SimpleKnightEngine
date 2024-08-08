@@ -44,12 +44,12 @@ public class GridVector extends Vector<Integer>
     }
 
     @Override
-    public FreeVector getRenderCoordinates() {
+    public FreeVector getRenderCoordinates(double zoom) {
         FreeVector renderVector = new FreeVector();
-        renderVector.set(
-                (double) x()*Settings.defaultGridSize,
-                (double) y()*Settings.defaultGridSize,
-                (double) z()*Settings.defaultGridSize);
+        double x = x() * (int)Math.round(Settings.defaultGridSize * zoom);
+        double y = y() * (int)Math.round(Settings.defaultGridSize * zoom);
+        double z = z() * (int)Math.round(Settings.defaultGridSize * zoom);
+        renderVector.set(x,y,z);
         return renderVector;
     }
 
