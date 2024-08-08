@@ -34,13 +34,5 @@ public class BrownianMovement extends GridObject
             GameObject gameObject = new Marker(gridSpace, scene, mapIcon, gridPos);
             scene.renderables.add(gameObject);
         }
-        else
-        {
-            System.out.println("Found " + myCell.gameObjects.size() + " objects");
-            for (GameObject go :myCell.gameObjects)
-            {
-                System.out.println(go);
-            }
-        }
     }
 }

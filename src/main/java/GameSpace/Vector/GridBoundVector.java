@@ -41,4 +41,11 @@ public class GridBoundVector extends GridVector
 
         super.set(x, y, z);
     }
+
+    public static GridBoundVector create(GridSpace gridSpace, Integer x, Integer y, Integer z)
+    {
+        GridBoundVector vector = new GridBoundVector(gridSpace);
+        vector.set(x,y,z);
+        return vector;
+    }
 }

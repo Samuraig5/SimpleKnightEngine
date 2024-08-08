@@ -45,7 +45,7 @@ public class GridSpace
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
                 for (int k = 0; k < z; k++) {
-                    cells[i][j][k] = new Cell();
+                    cells[i][j][k] = new Cell(GridBoundVector.create(this,i,j,k));
                 }
             }
         }
@@ -77,6 +77,6 @@ public class GridSpace
         int y = (int) Randoms.range(0, size.y()-1,true);
         int z = (int) Randoms.range(0, size.z()-1,true);
         logger.debug("Generated random position: (" + x + ", " + y + ", " + z + ").");
-        return new GridBoundVector(this);
+        return GridBoundVector.create(this, x, y, z);
     }
 }
