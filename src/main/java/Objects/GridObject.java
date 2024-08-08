@@ -71,4 +71,13 @@ public class GridObject extends GameObject
         myCell = gridSpace.getCells()[newVector.x()][newVector.y()][newVector.z()];
         myCell.gameObjects.add(this);
     }
+
+    @Override
+    public void delete(String deleteMessage) {
+        super.delete(deleteMessage);
+        if (myCell != null)
+        {
+            myCell.gameObjects.remove(this);
+        }
+    }
 }

@@ -8,7 +8,7 @@ import Rendering.SKRenderer.Scene;
 
 import java.awt.*;
 
-public class GameObject implements Updatable, Renderable
+public class GameObject implements Updatable, Renderable, Deletable
 {
     /**
      * Scene the GameObject is in
@@ -66,5 +66,11 @@ public class GameObject implements Updatable, Renderable
     @Override
     public void update() {
 
+    }
+
+    @Override
+    public void delete(String deleteMessage) {
+        scene.renderables.remove(this);
+        scene.updatables.remove(this);
     }
 }
