@@ -21,7 +21,7 @@ public class GridSpace
      * Vector representing the size of the GridSpace.
      * Each component corresponds to the size of its associated dimension.
      */
-    private final GridVector size;
+    private final GridBoundVector size;
 
     /**
      * Creates a grid of cells given a size.
@@ -38,9 +38,8 @@ public class GridSpace
         int y = Math.max(1,size.y());
         int z = Math.max(1,size.z());
 
-        size.set(x,y,z);
+        this.size = GridBoundVector.create(this, x,y,z);
 
-        this.size = size;
         cells = new Cell[size.x()][size.y()][size.z()];
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
@@ -57,6 +56,29 @@ public class GridSpace
     public Cell[][][] getCells()
     {
         return cells;
+    }
+
+    public Cell[][][] getNeighbours(Cell origin)
+    {
+        Cell[][][] neighbours = new Cell[3][3][3];
+        neighbours[1][1][1] = origin;
+
+        GridBoundVector originPos = origin.getPosition();
+
+        for (int i = -1; i < 2; i++) {
+            for (int j = -1; j < 2; j++) {
+                for (int k = -1; k < 2; k++) {
+                    int xGoal = originPos.x()+i;
+                    int yGoal = originPos.y()+j;
+                    int zGoal = originPos.z()+k;
+
+                    if (!contains(GridVector.create(xGoal,yGoal,zGoal))) {continue;}
+
+                    neighbours[i+1][j+1][k+1] = cells[xGoal][yGoal][zGoal];
+                }
+            }
+        }
+        return neighbours;
     }
 
     /**
@@ -78,5 +100,13 @@ public class GridSpace
         int z = (int) Randoms.range(0, size.z()-1,true);
         logger.debug("Generated random position: (" + x + ", " + y + ", " + z + ").");
         return GridBoundVector.create(this, x, y, z);
+    }
+
+    public boolean contains(GridVector vector)
+    {
+        if (vector.x() < 0 || vector.x() > size.x()-1) {return false;}
+        if (vector.y() < 0 || vector.y() > size.y()-1) {return false;}
+        if (vector.z() < 0 || vector.z() > size.z()-1) {return false;}
+        return true;
     }
 }

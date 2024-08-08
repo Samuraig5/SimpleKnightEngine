@@ -1,6 +1,7 @@
 package GameSpace.Vector;
 
 import Core.Settings;
+import GameSpace.GridSpace;
 import MathHelper.Randoms;
 
 public class GridVector extends Vector<Integer>
@@ -66,5 +67,12 @@ public class GridVector extends Vector<Integer>
         for (int i = 0; i < 3; i++) {
             coordinates[i] = (int) Randoms.range(min, max,true);
         }
+    }
+
+    public static GridVector create(Integer x, Integer y, Integer z)
+    {
+        GridVector vector = new GridVector();
+        vector.set(x,y,z);
+        return vector;
     }
 }
