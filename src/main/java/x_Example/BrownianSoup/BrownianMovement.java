@@ -1,4 +1,4 @@
-package x_Example;
+package x_Example.BrownianSoup;
 
 import GameSpace.GridSpace;
 import GameSpace.Vector.GridBoundVector;
@@ -32,7 +32,7 @@ public class BrownianMovement extends GridObject
             GridBoundVector gridPos = new GridBoundVector(gridSpace);
             gridPos.copy(position);
             GameObject gameObject = new Marker(gridSpace, scene, mapIcon, gridPos);
-            scene.renderables.add(gameObject);
+            scene.addGameObject(gameObject);
         }
     }
 }

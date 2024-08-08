@@ -1,6 +1,4 @@
-package x_Example;
-
-import Core.SimpleKnightEngine;
+package x_Example.BrownianSoup;
 
 public class Example
 {

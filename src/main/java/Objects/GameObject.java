@@ -70,7 +70,6 @@ public class GameObject implements Updatable, Renderable, Deletable
 
     @Override
     public void delete(String deleteMessage) {
-        scene.renderables.remove(this);
-        scene.updatables.remove(this);
+        scene.removeGameObject(this);
     }
 }

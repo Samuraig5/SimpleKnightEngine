@@ -1,10 +1,9 @@
-package x_Example;
+package x_Example.BrownianSoup;
 
 import GameSpace.Vector.GridBoundVector;
 import Objects.GameObject;
 import Core.Settings;
 import Core.SimpleKnightEngine;
-import GameSpace.Vector.FreeVector;
 import GameSpace.Vector.GridVector;
 import GameSpace.GridSpace;
 import MathHelper.Randoms;
@@ -32,8 +31,7 @@ public class ExampleScene extends Scene
         for (int j = 0; j < 10; j++) {
             GridBoundVector gridPos = grid.getRandomPosition();
             GameObject gameObject = new BrownianMovement(grid, this, mapIcon, gridPos);
-            renderables.add(gameObject);
-            updatables.add(gameObject);
+            addGameObject(gameObject);
         }
         Double x = Randoms.range(0,1000,false);
         Double y = Randoms.range(0,1000,false);

@@ -13,8 +13,8 @@ import java.util.List;
 public abstract class Scene
 {
     protected SimpleKnightEngine engine;
-    public List<Updatable> updatables = new ArrayList<>();
-    public List<Renderable> renderables = new ArrayList<>();
+    private final List<Updatable> updatables = new ArrayList<>();
+    private final List<Renderable> renderables = new ArrayList<>();
 
     public Scene(SimpleKnightEngine engine)
     {
@@ -23,18 +23,35 @@ public abstract class Scene
     public SimpleKnightEngine getEngine() {
         return engine;
     }
+    public List<Updatable> getUpdatables()
+    {
+        return new ArrayList<>(updatables);
+    }
+    public List<Renderable> getRenderables()
+    {
+        return new ArrayList<>(renderables);
+    }
+    public void addGameObject(GameObject gameObject)
+    {
+        updatables.add(gameObject);
+        renderables.add(gameObject);
+    }
+    public void removeGameObject(GameObject gameObject)
+    {
+        updatables.remove(gameObject);
+        renderables.remove(gameObject);
+    }
     public void drawRenderables(Graphics g)
     {
-        List<Renderable> safeRenderables = new ArrayList<>(renderables);
-        for (Renderable renderable:safeRenderables)
+        for (Renderable renderable:getRenderables())
         {
+            if (renderable == null) {continue;}
             renderable.render(g,this);
         }
     }
     protected void updateUpdateables()
     {
-        List<Updatable> safeUpdatables = new ArrayList<>(updatables);
-        for (Updatable updatable:safeUpdatables)
+        for (Updatable updatable:getUpdatables())
         {
             updatable.update();
         }

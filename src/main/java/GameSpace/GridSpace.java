@@ -21,7 +21,7 @@ public class GridSpace
      * Vector representing the size of the GridSpace.
      * Each component corresponds to the size of its associated dimension.
      */
-    private final GridBoundVector size;
+    private final GridVector size;
 
     /**
      * Creates a grid of cells given a size.
@@ -38,9 +38,9 @@ public class GridSpace
         int y = Math.max(1,size.y());
         int z = Math.max(1,size.z());
 
-        this.size = GridBoundVector.create(this, x,y,z);
+        this.size = GridVector.create(x,y,z);
+        cells = new Cell[x][y][z];
 
-        cells = new Cell[size.x()][size.y()][size.z()];
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
                 for (int k = 0; k < z; k++) {
@@ -73,7 +73,6 @@ public class GridSpace
                     int zGoal = originPos.z()+k;
 
                     if (!contains(GridVector.create(xGoal,yGoal,zGoal))) {continue;}
-
                     neighbours[i+1][j+1][k+1] = cells[xGoal][yGoal][zGoal];
                 }
             }

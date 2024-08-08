@@ -1,7 +1,6 @@
-package x_Example;
+package x_Example.BrownianSoup;
 
 import Core.SimpleKnightEngine;
-import Rendering.ResourceManager.ImageManager;
 import Rendering.SKRenderer.Scene;
 
 public class ExampleEngine extends SimpleKnightEngine

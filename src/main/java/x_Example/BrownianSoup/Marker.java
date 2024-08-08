@@ -1,4 +1,4 @@
-package x_Example;
+package x_Example.BrownianSoup;
 
 import GameSpace.GridSpace;
 import GameSpace.Vector.Vector;
