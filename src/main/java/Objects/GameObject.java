@@ -1,6 +1,7 @@
 package Objects;
 
 import Core.Settings;
+import GameSpace.Vector.RenderVector;
 import GameSpace.Vector.Vector;
 import GameSpace.Vector.FreeVector;
 import Rendering.MapIcon;
@@ -53,15 +54,12 @@ public class GameObject implements Updatable, Renderable, Deletable
     {
         if (!mapIcon.hasSprite()) {return;}
         Image img = mapIcon.getSprite().getImage();
-        FreeVector renderCoords = position.getRenderCoordinates(scene.getZoomLevel());
+        RenderVector renderCoords = position.getRenderCoordinates(scene.getZoomLevel());
 
         double zoom = scene.getZoomLevel();
         int gridSize = (int) Math.round(Settings.defaultGridSize * zoom);
 
-        int x = (int) Math.round(renderCoords.x());
-        int y = (int) Math.round(renderCoords.y());
-
-        g.drawImage(img, x, y, gridSize, gridSize, scene.getEngine().getRenderer());
+        g.drawImage(img, renderCoords.x(), renderCoords.y(), gridSize, gridSize, scene.getEngine().getRenderer());
     }
 
     @Override

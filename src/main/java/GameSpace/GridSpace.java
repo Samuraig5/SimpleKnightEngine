@@ -1,12 +1,17 @@
 package GameSpace;
 
+import Core.Settings;
 import GameSpace.Vector.GridBoundVector;
 import GameSpace.Vector.GridVector;
 import MathHelper.Randoms;
+import Objects.Renderable;
+import Rendering.SKRenderer.Scene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GridSpace
+import java.awt.*;
+
+public class GridSpace implements Renderable
 {
     /**
      * Logger for logging
@@ -107,5 +112,22 @@ public class GridSpace
         if (vector.y() < 0 || vector.y() > size.y()-1) {return false;}
         if (vector.z() < 0 || vector.z() > size.z()-1) {return false;}
         return true;
+    }
+
+    @Override
+    public void render(Graphics g, Scene scene) {
+        int x = getSize().x();
+        int y = getSize().y();
+
+        double zoom = scene.getZoomLevel();
+        int gridSize = (int) Math.round(Settings.defaultGridSize * zoom);
+
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                g.drawRect(i*gridSize,j*gridSize,gridSize,gridSize);
+            }
+        }
     }
 }

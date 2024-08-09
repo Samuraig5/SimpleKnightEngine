@@ -48,6 +48,7 @@ public class SKRenderer extends JPanel implements ImageObserver
             removeMouseListener(activeScene.getControls());
             removeKeyListener(activeScene.getControls());
             removeMouseWheelListener(activeScene.getControls());
+            removeMouseMotionListener(activeScene.getControls());
         }
 
         activeScene = s;
@@ -56,5 +57,6 @@ public class SKRenderer extends JPanel implements ImageObserver
         addMouseListener(activeScene.getControls());
         addKeyListener(activeScene.getControls());
         addMouseWheelListener(activeScene.getControls());
+        addMouseMotionListener(activeScene.getControls());
     }
 }

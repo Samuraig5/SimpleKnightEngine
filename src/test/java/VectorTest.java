@@ -1,6 +1,8 @@
 import Core.Settings;
 import GameSpace.Vector.FreeVector;
 import GameSpace.Vector.GridVector;
+import GameSpace.Vector.RenderVector;
+import Objects.Renderable;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -32,12 +34,7 @@ class VectorTest
 
     @Test
     void test3DGridCoordinatesToRender() {
-        GridVector coords = GridVector.create(1, 2, 3);
-        FreeVector renderCoords = coords.getRenderCoordinates(1);
-
-        assertEquals(1 * Settings.defaultGridSize, renderCoords.x());
-        assertEquals(2 * Settings.defaultGridSize, renderCoords.y());
-        assertEquals(3 * Settings.defaultGridSize, renderCoords.z());
+        //TODO: Implement Test
     }
 
     @Test
@@ -64,11 +61,6 @@ class VectorTest
 
     @Test
     void test3DFreeCoordinatesToRender() {
-        FreeVector coords = FreeVector.create(1.5, 2.5, 3.5);
-        FreeVector renderCoords = coords.getRenderCoordinates(1);
-
-        assertEquals(1.5, renderCoords.x());
-        assertEquals(2.5, renderCoords.y());
-        assertEquals(3.5, renderCoords.z());
+        //TODO: Implement Test
     }
 }

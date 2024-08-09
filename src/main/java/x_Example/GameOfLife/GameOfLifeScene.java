@@ -2,16 +2,14 @@ package x_Example.GameOfLife;
 
 import Core.Settings;
 import Core.SimpleKnightEngine;
-import GameInput.BasicMapControls;
+import GameInput.BasicCameraControls;
 import GameSpace.Cell;
 import GameSpace.GridSpace;
 import GameSpace.Vector.GridBoundVector;
 import GameSpace.Vector.GridVector;
-import GameSpace.Vector.Vector;
 import MathHelper.Randoms;
 import Objects.GameObject;
 import Objects.GridObject;
-import Rendering.GridRenderer;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 import Rendering.Sprite;
@@ -29,6 +27,7 @@ public class GameOfLifeScene extends Scene
         GridVector gridSize = new GridVector();
         gridSize.set(100,100);
         grid = new GridSpace(gridSize);
+        addRenderable(grid);
 
         Cell[][][] cells = grid.getCells();
         GridVector size = grid.getSize();
@@ -43,13 +42,12 @@ public class GameOfLifeScene extends Scene
             }
         }
 
-        controls = new BasicMapControls(this);
+        controls = new BasicCameraControls(this);
     }
 
     @Override
     public void drawScene(Graphics g)
     {
-        GridRenderer.drawGrid(g,this,grid);
         drawRenderables(g);
     }
 

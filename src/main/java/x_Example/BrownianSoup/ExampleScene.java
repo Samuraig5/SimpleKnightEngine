@@ -1,6 +1,6 @@
 package x_Example.BrownianSoup;
 
-import GameInput.BasicMapControls;
+import GameInput.BasicCameraControls;
 import GameSpace.Vector.GridBoundVector;
 import Objects.GameObject;
 import Core.Settings;
@@ -8,7 +8,6 @@ import Core.SimpleKnightEngine;
 import GameSpace.Vector.GridVector;
 import GameSpace.GridSpace;
 import MathHelper.Randoms;
-import Rendering.GridRenderer;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 import Rendering.Sprite;
@@ -17,16 +16,16 @@ import java.awt.*;
 
 public class ExampleScene extends Scene
 {
-    private final GridSpace grid;
     public ExampleScene(SimpleKnightEngine engine)
     {
         super(engine);
 
-        controls = new BasicMapControls(this);
+        controls = new BasicCameraControls(this);
 
         GridVector gridSize = new GridVector();
         gridSize.set(100,100);
-        grid = new GridSpace(gridSize);
+        GridSpace grid = new GridSpace(gridSize);
+        addRenderable(grid);
 
         Image i = engine.getImageManager().getResource(Settings.missingTextureSprite);
         Sprite sprite = new Sprite(i, true);
@@ -51,7 +50,6 @@ public class ExampleScene extends Scene
     @Override
     public void drawScene(Graphics g)
     {
-        GridRenderer.drawGrid(g,this,grid);
         drawRenderables(g);
     }
 

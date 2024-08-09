@@ -4,7 +4,7 @@ import Core.Settings;
 import GameSpace.GridSpace;
 import MathHelper.Randoms;
 
-public class GridVector extends Vector<Integer>
+public class GridVector extends RenderVector
 {
     /**
      * Component of the vector, stored as integers
@@ -12,61 +12,13 @@ public class GridVector extends Vector<Integer>
     private final Integer[] coordinates = {0,0,0};
 
     @Override
-    public Integer zero() {
-        return 0;
-    }
-
-    @Override
-    public Integer[] toArray() {
-        return coordinates;
-    }
-
-    @Override
-    public void set(Integer x, Integer y, Integer z) {
-        coordinates[0] = x;
-        coordinates[1] = y;
-        coordinates[2] = z;
-    }
-
-    @Override
-    public Integer x() {
-        return coordinates[0];
-    }
-
-    @Override
-    public Integer y() {
-        return coordinates[1];
-    }
-
-    @Override
-    public Integer z() {
-        return coordinates[2];
-    }
-
-    @Override
-    public FreeVector getRenderCoordinates(double zoom) {
-        FreeVector renderVector = new FreeVector();
-        double x = x() * (int)Math.round(Settings.defaultGridSize * zoom);
-        double y = y() * (int)Math.round(Settings.defaultGridSize * zoom);
-        double z = z() * (int)Math.round(Settings.defaultGridSize * zoom);
+    public RenderVector getRenderCoordinates(double zoom) {
+        RenderVector renderVector = new RenderVector();
+        int x = x() * (int)Math.round(Settings.defaultGridSize * zoom);
+        int y = y() * (int)Math.round(Settings.defaultGridSize * zoom);
+        int z = z() * (int)Math.round(Settings.defaultGridSize * zoom);
         renderVector.set(x,y,z);
         return renderVector;
-    }
-
-    @Override
-    public void add(Vector<?> vector) {
-        int x = coordinates[0] + (Integer) vector.x();
-        int y = coordinates[1] + (Integer) vector.y();
-        int z = coordinates[2] + (Integer) vector.z();
-
-        set(x,y,z);
-    }
-
-    @Override
-    public void randomize(double min, double max) {
-        for (int i = 0; i < 3; i++) {
-            coordinates[i] = (int) Randoms.range(min, max,true);
-        }
     }
 
     public static GridVector create(Integer x, Integer y, Integer z)
