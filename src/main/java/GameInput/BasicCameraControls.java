@@ -101,7 +101,6 @@ public class BasicCameraControls extends BasicControls
 
         // Update camera offset
         scene.changeCameraOffset(deltaVector);
-        System.out.println("Dragging");
 
         // Update last mouse position
         lastMousePosition = currentMousePosition;
