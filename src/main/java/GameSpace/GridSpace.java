@@ -27,6 +27,7 @@ public class GridSpace implements Renderable
      * Each component corresponds to the size of its associated dimension.
      */
     private final GridVector size;
+    private int renderPriority = 0;
 
     /**
      * Creates a grid of cells given a size.
@@ -129,5 +130,15 @@ public class GridSpace implements Renderable
                 g.drawRect(i*gridSize,j*gridSize,gridSize,gridSize);
             }
         }
+    }
+
+    @Override
+    public void setRenderPriority(int priority) {
+        renderPriority = priority;
+    }
+
+    @Override
+    public int getRenderPriority() {
+        return renderPriority;
     }
 }

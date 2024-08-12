@@ -27,24 +27,18 @@ public class BrownianSoupScene extends Scene
         GridSpace grid = new GridSpace(gridSize);
         addRenderable(grid);
 
-        Image i = engine.getImageManager().getResource(Settings.missingTextureSprite);
+        Image i = engine.getImageManager().getResource("src/main/java/x_Example/BrownianSoup/Red Block.png");
         Sprite sprite = new Sprite(i, true);
         MapIcon mapIcon = new MapIcon(sprite,'?',Color.lightGray);
 
         for (int j = 0; j < 10; j++) {
             GridBoundVector gridPos = grid.getRandomPosition();
             GameObject gameObject = new BrownianMovement(grid, this, mapIcon, gridPos);
+            gameObject.setRenderPriority(1);
             addGameObject(gameObject);
         }
         Double x = Randoms.range(0,1000,false);
         Double y = Randoms.range(0,1000,false);
-
-        //FreeVector freePos = new FreeVector();
-        //freePos.set(x,y);
-
-        //GameObject gameObject = new GameObject(this, mapIcon, freePos);
-        //renderables.add(gameObject);
-        //updatables.add(gameObject);
     }
 
     @Override

@@ -8,6 +8,9 @@ import Objects.GameObject;
 import Objects.GridObject;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
+import Rendering.Sprite;
+
+import java.awt.*;
 
 public class BrownianMovement extends GridObject
 {
@@ -31,6 +34,9 @@ public class BrownianMovement extends GridObject
         {
             GridBoundVector gridPos = new GridBoundVector(gridSpace);
             gridPos.copy(position);
+            Image i = scene.getEngine().getImageManager().getResource("src/main/java/x_Example/BrownianSoup/Block.png");
+            Sprite sprite = new Sprite(i, true);
+            MapIcon mapIcon = new MapIcon(sprite,'?',Color.lightGray);
             GameObject gameObject = new Marker(gridSpace, scene, mapIcon, gridPos);
             scene.addGameObject(gameObject);
         }

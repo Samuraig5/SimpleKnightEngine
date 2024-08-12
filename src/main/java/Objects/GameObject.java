@@ -24,6 +24,7 @@ public abstract class GameObject implements Updatable, Renderable, Deletable
      * The Sprite or Icon of the MapIcon is used to render the object.
      */
     protected final MapIcon mapIcon;
+    private int renderPriority;
 
     public GameObject(Scene scene, MapIcon mapIcon, Vector<?> position)
     {
@@ -79,5 +80,15 @@ public abstract class GameObject implements Updatable, Renderable, Deletable
     @Override
     public void delete(String deleteMessage) {
         scene.removeGameObject(this);
+    }
+
+    @Override
+    public void setRenderPriority(int priority) {
+        this.renderPriority = priority;
+    }
+
+    @Override
+    public int getRenderPriority() {
+        return renderPriority;
     }
 }

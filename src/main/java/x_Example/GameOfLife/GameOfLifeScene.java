@@ -83,7 +83,7 @@ public class GameOfLifeScene extends Scene
 
     private void setAlive(GridBoundVector gridPos)
     {
-        Image img = engine.getImageManager().getResource(Settings.missingTextureSprite);
+        Image img = engine.getImageManager().getResource("src/main/java/x_Example/GameOfLife/Block.png");
         Sprite sprite = new Sprite(img, true);
         MapIcon mapIcon = new MapIcon(sprite,'?',Color.lightGray);
 

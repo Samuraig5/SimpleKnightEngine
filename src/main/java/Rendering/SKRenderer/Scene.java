@@ -11,6 +11,7 @@ import ch.qos.logback.core.pattern.LiteralConverter;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public abstract class Scene
@@ -53,7 +54,10 @@ public abstract class Scene
     public void drawRenderables(Graphics g)
     {
         g.translate(cameraOffset.x(), cameraOffset.y());
-        for (Renderable renderable:getRenderables())
+        List<Renderable> saveRenderables = getRenderables();
+        saveRenderables.sort(Comparator.comparingInt(Renderable::getRenderPriority));
+
+        for (Renderable renderable:saveRenderables)
         {
             if (renderable == null) {continue;}
             renderable.render(g,this);
