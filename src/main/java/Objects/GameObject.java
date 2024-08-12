@@ -55,6 +55,14 @@ public class GameObject implements Updatable, Renderable, Deletable
         RenderVector renderCoords = position.getRenderCoordinates(scene.getZoomLevel());
         int renderSize = (int) Math.round(mapIcon.getIconSize() * scene.getZoomLevel());
 
+        RenderVector objectOffset = RenderVector.create(-renderSize/2, -renderSize/2, 0);
+        renderCoords.add(objectOffset);
+
+        drawObject(g, renderCoords, renderSize);
+    }
+
+    protected void drawObject(Graphics g, RenderVector renderCoords, int renderSize)
+    {
         if (mapIcon.hasSprite() && Settings.renderSprites)
         {
             Image img = mapIcon.getSprite().getImage();

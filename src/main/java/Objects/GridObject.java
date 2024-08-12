@@ -5,6 +5,7 @@ import GameSpace.Cell;
 import GameSpace.GridSpace;
 import GameSpace.Vector.FreeVector;
 import GameSpace.Vector.GridBoundVector;
+import GameSpace.Vector.RenderVector;
 import GameSpace.Vector.Vector;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
@@ -83,5 +84,14 @@ public class GridObject extends GameObject
         {
             myCell.gameObjects.remove(this);
         }
+    }
+
+    @Override
+    public void render(Graphics g, Scene scene)
+    {
+        RenderVector renderCoords = getPosition().getRenderCoordinates(scene.getZoomLevel());
+        int renderSize = (int) Math.round(mapIcon.getIconSize() * scene.getZoomLevel());
+
+        drawObject(g, renderCoords, renderSize);
     }
 }

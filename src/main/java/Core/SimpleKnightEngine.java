@@ -4,6 +4,7 @@ import Objects.GameClock;
 import Rendering.ResourceManager.ImageManager;
 import Rendering.ResourceManager.ResourceManager;
 import Rendering.SKRenderer.SKRenderer;
+import Rendering.SKRenderer.Scene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -80,8 +81,15 @@ public abstract class SimpleKnightEngine
     /**
      * Called after the constructor is finished.
      * Scenes should be created and assigned here.
+     * When a scene is loaded, the game clock isn't automatically started.
      */
     public abstract void setUp();
+
+    public void setScene(Scene scene)
+    {
+        renderer.setScene(scene);
+        gameClock.setScene(scene);
+    }
 
     /**
      * Returns the imageManager

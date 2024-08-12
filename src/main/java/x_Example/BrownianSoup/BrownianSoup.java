@@ -1,9 +1,9 @@
 package x_Example.BrownianSoup;
 
-public class Example
+public class BrownianSoup
 {
     public static void main(String[] args)
     {
-        new ExampleEngine("x_Example");
+        new BrownianSoupEngine("x_Example");
     }
 }

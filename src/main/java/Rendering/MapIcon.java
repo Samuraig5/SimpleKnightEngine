@@ -17,8 +17,11 @@ public class MapIcon
         this.iconColour = iconColour;
         this.iconSize = iconSize;
     }
+    public MapIcon(Sprite sprite, char symbol, Color iconColour, int iconSize) {Initialize(sprite, symbol, iconColour, iconSize);}
     public MapIcon(Sprite sprite, char symbol, Color iconColour) {Initialize(sprite, symbol, iconColour, (int)Settings.defaultGridSize);}
+    public MapIcon(char symbol, Color iconColour, int iconSize) {Initialize(null, symbol, iconColour, iconSize);}
     public MapIcon(char symbol) {Initialize(null, symbol, Settings.defaultColour, (int)Settings.defaultGridSize);}
+
     public MapIcon() {Initialize(null, '?', Settings.defaultColour, (int)Settings.defaultGridSize);}
 
     public boolean hasSprite()

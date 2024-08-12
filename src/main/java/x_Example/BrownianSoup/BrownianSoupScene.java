@@ -14,9 +14,9 @@ import Rendering.Sprite;
 
 import java.awt.*;
 
-public class ExampleScene extends Scene
+public class BrownianSoupScene extends Scene
 {
-    public ExampleScene(SimpleKnightEngine engine)
+    public BrownianSoupScene(SimpleKnightEngine engine)
     {
         super(engine);
 
