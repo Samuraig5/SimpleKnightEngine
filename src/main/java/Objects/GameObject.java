@@ -3,7 +3,6 @@ package Objects;
 import Core.Settings;
 import GameSpace.Vector.RenderVector;
 import GameSpace.Vector.Vector;
-import GameSpace.Vector.FreeVector;
 import Rendering.ColouredString;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
@@ -54,12 +53,14 @@ public class GameObject implements Updatable, Renderable, Deletable
     public void render(Graphics g, Scene scene)
     {
         RenderVector renderCoords = position.getRenderCoordinates(scene.getZoomLevel());
-        int gridSize = (int) Math.round(Settings.defaultGridSize * scene.getZoomLevel());
+        int renderSize = (int) Math.round(mapIcon.getIconSize() * scene.getZoomLevel());
 
         if (mapIcon.hasSprite() && Settings.renderSprites)
         {
             Image img = mapIcon.getSprite().getImage();
-            g.drawImage(img, renderCoords.x(), renderCoords.y(), gridSize, gridSize, scene.getEngine().getRenderer());
+            g.drawImage(img, renderCoords.x(), renderCoords.y(),
+                    renderSize, renderSize,
+                    scene.getEngine().getRenderer());
         }
         else
         {
@@ -68,7 +69,7 @@ public class GameObject implements Updatable, Renderable, Deletable
             ColouredString colouredString = new ColouredString(c+"",color);
 
             g.setColor(colouredString.getColor());
-            g.setFont(new Font("Courier New", Font.PLAIN, gridSize));
+            g.setFont(new Font("Courier New", Font.PLAIN, renderSize));
 
             g.drawString(colouredString.getString(), renderCoords.x(), renderCoords.y());
         }
