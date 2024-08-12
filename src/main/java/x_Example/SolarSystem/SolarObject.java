@@ -2,11 +2,12 @@ package x_Example.SolarSystem;
 
 import GameSpace.Vector.FreeVector;
 import GameSpace.Vector.Vector;
+import Objects.FreeObject;
 import Objects.GameObject;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 
-public class SolarObject extends GameObject {
+public class SolarObject extends FreeObject {
 
     private SolarObject parent;
     private double distance;

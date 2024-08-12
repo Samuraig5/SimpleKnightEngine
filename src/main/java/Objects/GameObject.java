@@ -9,7 +9,7 @@ import Rendering.SKRenderer.Scene;
 
 import java.awt.*;
 
-public class GameObject implements Updatable, Renderable, Deletable
+public abstract class GameObject implements Updatable, Renderable, Deletable
 {
     /**
      * Scene the GameObject is in
@@ -47,18 +47,6 @@ public class GameObject implements Updatable, Renderable, Deletable
      */
     public Vector<?> getPosition() {
         return position;
-    }
-
-    @Override
-    public void render(Graphics g, Scene scene)
-    {
-        RenderVector renderCoords = position.getRenderCoordinates(scene.getZoomLevel());
-        int renderSize = (int) Math.round(mapIcon.getIconSize() * scene.getZoomLevel());
-
-        RenderVector objectOffset = RenderVector.create(-renderSize/2, -renderSize/2, 0);
-        renderCoords.add(objectOffset);
-
-        drawObject(g, renderCoords, renderSize);
     }
 
     protected void drawObject(Graphics g, RenderVector renderCoords, int renderSize)
