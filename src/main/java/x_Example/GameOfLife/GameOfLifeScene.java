@@ -20,7 +20,7 @@ import java.util.List;
 
 public class GameOfLifeScene extends Scene
 {
-    private final GridSpace grid;
+    private GridSpace grid;
     public GameOfLifeScene(SimpleKnightEngine engine)
     {
         super(engine);
@@ -37,7 +37,7 @@ public class GameOfLifeScene extends Scene
                 if (Randoms.decider(0.075f))
                 {
                     GridBoundVector gridPos = GridBoundVector.create(grid,i,j,0);
-                    setAlive(gridPos);
+                    setAlive(gridPos, grid);
                 }
             }
         }
@@ -56,6 +56,8 @@ public class GameOfLifeScene extends Scene
     {
         updateUpdateables();
 
+        GridSpace newGrid = grid.copy();
+
         for (int i = 0; i < grid.getSize().x(); i++) {
             for (int j = 0; j < grid.getSize().y(); j++) {
                 GridBoundVector sourcePos = GridBoundVector.create(grid,i,j,0);
@@ -67,33 +69,35 @@ public class GameOfLifeScene extends Scene
                 {
                     if (count == 3)
                     {
-                        setAlive(sourcePos);
+                        setAlive(sourcePos, newGrid);
                     }
                 }
                 else
                 {
                     if (count > 3 || count < 2)
                     {
-                        setDead(sourcePos);
+                        setDead(sourcePos, newGrid);
                     }
                 }
             }
         }
+
+        grid = newGrid;
     }
 
-    private void setAlive(GridBoundVector gridPos)
+    private void setAlive(GridBoundVector gridPos, GridSpace newGrid)
     {
         Image img = engine.getImageManager().getResource("src/main/java/x_Example/GameOfLife/Block.png");
         Sprite sprite = new Sprite(img, true);
         MapIcon mapIcon = new MapIcon(sprite,'?',Color.lightGray);
 
-        GameObject gameObject = new GridObject(grid, this, mapIcon, gridPos);
+        GameObject gameObject = new GridObject(newGrid, this, mapIcon, gridPos);
         addGameObject(gameObject);
     }
 
-    private void setDead(GridBoundVector gridPos)
+    private void setDead(GridBoundVector gridPos, GridSpace newGrid)
     {
-        List<GameObject> safeObjects = new ArrayList<>(grid.getCells()[gridPos.x()][gridPos.y()][0].gameObjects);
+        List<GameObject> safeObjects = new ArrayList<>(newGrid.getCells()[gridPos.x()][gridPos.y()][0].gameObjects);
         for (GameObject gameObject : safeObjects) {
             gameObject.delete("Died");
         }

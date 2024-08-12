@@ -13,6 +13,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Scene
 {
@@ -55,7 +56,13 @@ public abstract class Scene
     {
         g.translate(cameraOffset.x(), cameraOffset.y());
         List<Renderable> saveRenderables = getRenderables();
-        saveRenderables.sort(Comparator.comparingInt(Renderable::getRenderPriority));
+
+        saveRenderables.removeIf(Objects::isNull);
+
+        if (saveRenderables.size() > 1)
+        {
+            saveRenderables.sort(Comparator.comparingInt(Renderable::getRenderPriority));
+        }
 
         for (Renderable renderable:saveRenderables)
         {
