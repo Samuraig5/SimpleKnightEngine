@@ -149,7 +149,10 @@ public class GridSpace implements Renderable
 
         for (int i = 0; i < getSize().x(); i++) {
             for (int j = 0; j < getSize().y(); j++) {
-                if (getSize().z() >= 0) System.arraycopy(cells[i][j], 0, newGridCells[i][j], 0, getSize().z());
+                if (getSize().z() >= 0)
+                {
+                    System.arraycopy(cells[i][j], 0, newGridCells[i][j], 0, getSize().z());
+                }
             }
         }
         return newGrid;
