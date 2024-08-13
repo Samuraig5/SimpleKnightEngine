@@ -2,8 +2,7 @@ package x_Example.SolarSystem;
 
 import GameSpace.Vector.FreeVector;
 import GameSpace.Vector.Vector;
-import Objects.FreeObject;
-import Objects.GameObject;
+import Objects.FreeObject.FreeObject;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 

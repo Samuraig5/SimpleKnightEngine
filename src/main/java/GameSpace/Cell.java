@@ -1,8 +1,7 @@
 package GameSpace;
 
-import Core.SimpleKnightEngine;
 import GameSpace.Vector.GridBoundVector;
-import Objects.GameObject;
+import Objects.Generic.GameObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

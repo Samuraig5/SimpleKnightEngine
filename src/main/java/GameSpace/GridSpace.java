@@ -4,7 +4,7 @@ import Core.Settings;
 import GameSpace.Vector.GridBoundVector;
 import GameSpace.Vector.GridVector;
 import MathHelper.Randoms;
-import Objects.Renderable;
+import Objects.Generic.Renderable;
 import Rendering.SKRenderer.Scene;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

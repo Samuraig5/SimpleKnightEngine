@@ -2,12 +2,11 @@ package Rendering.SKRenderer;
 
 import Core.SimpleKnightEngine;
 import GameInput.MenuControls;
-import GameSpace.Vector.FreeVector;
 import GameSpace.Vector.RenderVector;
-import Objects.GameObject;
-import Objects.Renderable;
-import Objects.Updatable;
-import ch.qos.logback.core.pattern.LiteralConverter;
+import Objects.Generic.Collidable;
+import Objects.Generic.GameObject;
+import Objects.Generic.Renderable;
+import Objects.Generic.Updatable;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -21,6 +20,8 @@ public abstract class Scene
     protected MenuControls controls;
     private final List<Updatable> updatables = new ArrayList<>();
     private final List<Renderable> renderables = new ArrayList<>();
+    private final List<Collidable> collidables = new ArrayList<>();
+
     public Scene(SimpleKnightEngine engine)
     {
         this.engine = engine;
@@ -39,6 +40,8 @@ public abstract class Scene
         return new ArrayList<>(renderables);
     }
     public void addRenderable(Renderable renderable) {renderables.add(renderable);}
+    public void addCollidable(Collidable collidable) {collidables.add(collidable);}
+    public List<Collidable> getCollidables() {return new ArrayList<>(collidables);}
 
     private double zoomLevel = 1;
     private RenderVector cameraOffset = RenderVector.create(0,0,0);

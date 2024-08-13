@@ -1,4 +1,4 @@
-package Objects;
+package Objects.Generic;
 
 import Rendering.SKRenderer.Scene;
 

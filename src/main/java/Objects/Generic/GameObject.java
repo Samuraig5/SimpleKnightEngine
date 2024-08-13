@@ -1,4 +1,4 @@
-package Objects;
+package Objects.Generic;
 
 import Core.Settings;
 import GameSpace.Vector.RenderVector;

@@ -1,7 +1,8 @@
-package Objects;
+package Objects.FreeObject;
 
 import GameSpace.Vector.RenderVector;
 import GameSpace.Vector.Vector;
+import Objects.Generic.GameObject;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 

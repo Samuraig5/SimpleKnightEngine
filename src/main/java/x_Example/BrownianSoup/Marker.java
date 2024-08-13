@@ -2,7 +2,7 @@ package x_Example.BrownianSoup;
 
 import GameSpace.GridSpace;
 import GameSpace.Vector.Vector;
-import Objects.GridObject;
+import Objects.GridObject.GridObject;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 

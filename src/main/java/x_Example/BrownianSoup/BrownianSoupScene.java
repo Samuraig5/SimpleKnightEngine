@@ -2,8 +2,7 @@ package x_Example.BrownianSoup;
 
 import GameInput.BasicCameraControls;
 import GameSpace.Vector.GridBoundVector;
-import Objects.GameObject;
-import Core.Settings;
+import Objects.Generic.GameObject;
 import Core.SimpleKnightEngine;
 import GameSpace.Vector.GridVector;
 import GameSpace.GridSpace;

@@ -7,12 +7,17 @@ import java.io.IOException;
 
 public class Sprite {
     private Image image;
-    private boolean fullCover;
+    private boolean fullCover = false;
 
     public Sprite(Image image, boolean fullCover)
     {
         setImage(image);
         setFullCover(fullCover);
+    }
+
+    public Sprite(Image image)
+    {
+        setImage(image);
     }
 
     public Sprite(String addr, boolean fullCover) throws IOException {

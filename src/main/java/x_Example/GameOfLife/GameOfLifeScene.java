@@ -1,6 +1,5 @@
 package x_Example.GameOfLife;
 
-import Core.Settings;
 import Core.SimpleKnightEngine;
 import GameInput.BasicCameraControls;
 import GameSpace.Cell;
@@ -8,8 +7,8 @@ import GameSpace.GridSpace;
 import GameSpace.Vector.GridBoundVector;
 import GameSpace.Vector.GridVector;
 import MathHelper.Randoms;
-import Objects.GameObject;
-import Objects.GridObject;
+import Objects.Generic.GameObject;
+import Objects.GridObject.GridObject;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 import Rendering.Sprite;

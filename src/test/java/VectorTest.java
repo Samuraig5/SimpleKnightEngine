@@ -1,8 +1,5 @@
-import Core.Settings;
 import GameSpace.Vector.FreeVector;
 import GameSpace.Vector.GridVector;
-import GameSpace.Vector.RenderVector;
-import Objects.Renderable;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;

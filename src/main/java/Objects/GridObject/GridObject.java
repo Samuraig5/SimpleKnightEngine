@@ -1,12 +1,11 @@
-package Objects;
+package Objects.GridObject;
 
-import Core.Settings;
 import GameSpace.Cell;
 import GameSpace.GridSpace;
-import GameSpace.Vector.FreeVector;
 import GameSpace.Vector.GridBoundVector;
 import GameSpace.Vector.RenderVector;
 import GameSpace.Vector.Vector;
+import Objects.Generic.GameObject;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
 import org.slf4j.Logger;

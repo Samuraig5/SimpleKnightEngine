@@ -1,8 +1,7 @@
 package Core;
 
-import Objects.GameClock;
+import Objects.Generic.GameClock;
 import Rendering.ResourceManager.ImageManager;
-import Rendering.ResourceManager.ResourceManager;
 import Rendering.SKRenderer.SKRenderer;
 import Rendering.SKRenderer.Scene;
 import org.slf4j.Logger;
