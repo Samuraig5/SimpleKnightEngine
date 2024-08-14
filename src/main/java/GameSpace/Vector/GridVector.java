@@ -4,7 +4,7 @@ import Core.Settings;
 import GameSpace.GridSpace;
 import MathHelper.Randoms;
 
-public class GridVector extends RenderVector
+public class GridVector extends IntegerVector
 {
     /**
      * Component of the vector, stored as integers

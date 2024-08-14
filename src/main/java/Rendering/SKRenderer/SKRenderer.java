@@ -1,6 +1,7 @@
 package Rendering.SKRenderer;
 
 import Core.SimpleKnightEngine;
+import GameSpace.Vector.RenderVector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,6 +41,8 @@ public class SKRenderer extends JPanel implements ImageObserver
 
     private void paintActiveScene(Graphics g)
     {
+        RenderVector offset = activeScene.getCameraOffset();
+        g.translate((int) (offset.x()*activeScene.getZoomLevel()), (int) (offset.y()*activeScene.getZoomLevel()));
         activeScene.drawScene(g);
     }
 

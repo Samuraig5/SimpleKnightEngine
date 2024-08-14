@@ -1,5 +1,6 @@
 package Core;
 
+import GameSpace.Vector.RenderVector;
 import Objects.Generic.GameClock;
 import Rendering.ResourceManager.ImageManager;
 import Rendering.SKRenderer.SKRenderer;
@@ -9,6 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
 import java.awt.*;
+
+import static java.awt.MouseInfo.getPointerInfo;
 
 public abstract class SimpleKnightEngine
 {
@@ -107,4 +110,13 @@ public abstract class SimpleKnightEngine
      * @return the gameClock of the program
      */
     public GameClock getGameClock() {return gameClock;}
+
+    public RenderVector getMouseScreenPosition()
+    {
+        int X_OFFSET = 6;
+        int Y_OFFSET = 30;
+        Point p = getPointerInfo().getLocation();
+        Point pa = frame.getLocationOnScreen();
+        return RenderVector.create(p.x - pa.x - X_OFFSET, p.y - pa.y - Y_OFFSET);
+    }
 }

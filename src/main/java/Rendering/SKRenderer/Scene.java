@@ -49,15 +49,22 @@ public abstract class Scene
     {
         updatables.add(gameObject);
         renderables.add(gameObject);
+        if (gameObject instanceof Collidable)
+        {
+            collidables.add((Collidable) gameObject);
+        }
     }
     public void removeGameObject(GameObject gameObject)
     {
         updatables.remove(gameObject);
         renderables.remove(gameObject);
+        if (gameObject instanceof Collidable)
+        {
+            collidables.remove((Collidable) gameObject);
+        }
     }
     public void drawRenderables(Graphics g)
     {
-        g.translate(cameraOffset.x(), cameraOffset.y());
         List<Renderable> saveRenderables = getRenderables();
 
         saveRenderables.removeIf(Objects::isNull);
@@ -90,5 +97,20 @@ public abstract class Scene
     }
     public RenderVector getCameraOffset() {return cameraOffset;}
     public void setCameraOffset(RenderVector newOffset) {cameraOffset = newOffset;}
-    public void changeCameraOffset(RenderVector change) {cameraOffset.add(change);}
+    public void changeCameraOffset(RenderVector change)
+    {
+        change.scale(1/getZoomLevel());
+        cameraOffset.add(change);
+    }
+    public RenderVector getMouseWorldPosition()
+    {
+        RenderVector mouse = engine.getMouseScreenPosition();
+        mouse.set(mouse.x(), mouse.y(), 0);
+        RenderVector offset = new RenderVector();
+        offset.copy(cameraOffset);
+        offset.set((int) (offset.x()*zoomLevel), (int) (offset.y()*zoomLevel), 0);
+        offset.invert();
+        mouse.add(offset);
+        return mouse;
+    }
 }

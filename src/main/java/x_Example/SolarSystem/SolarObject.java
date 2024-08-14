@@ -1,7 +1,6 @@
 package x_Example.SolarSystem;
 
-import GameSpace.Vector.FreeVector;
-import GameSpace.Vector.Vector;
+import GameSpace.Vector.IntegerVector;
 import Objects.FreeObject.FreeObject;
 import Rendering.MapIcon;
 import Rendering.SKRenderer.Scene;
@@ -13,7 +12,7 @@ public class SolarObject extends FreeObject {
     private double angle;  // Current angle of the orbit in radians
     private double angularVelocity;  // How fast the object orbits (radians per tick)
 
-    public SolarObject(Scene scene, MapIcon mapIcon, Vector<?> position)
+    public SolarObject(Scene scene, MapIcon mapIcon, IntegerVector position)
     {
         super(scene, mapIcon, position);
     }
@@ -33,10 +32,10 @@ public class SolarObject extends FreeObject {
             angle += angularVelocity;
 
             // Calculate the new position in 2D space (assuming x-y plane)
-            FreeVector position = FreeVector.create(0,0,0);
+            IntegerVector position = IntegerVector.create(0,0,0);
             position.add(parent.getPosition());
 
-            FreeVector orbitalOffset = FreeVector.create(distance * Math.cos(angle),distance * Math.sin(angle), 0 );
+            IntegerVector orbitalOffset = IntegerVector.create((int) (distance * Math.cos(angle)), (int) (distance * Math.sin(angle)), 0 );
             position.add(orbitalOffset);
 
             // Update the position of the SolarObject

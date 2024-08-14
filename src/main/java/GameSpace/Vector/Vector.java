@@ -74,6 +74,10 @@ public abstract class Vector<T extends Number & Comparable<T>>
      * @param vector the vector to be added
      */
     public abstract void add(Vector<?> vector);
+    public abstract void scale(double scalar);
+    public abstract void invert();
+
+    public abstract double distance(Vector<?> vector);
 
     /**
      * Overrides this vector, randomizing each component to be between min and max
@@ -81,4 +85,9 @@ public abstract class Vector<T extends Number & Comparable<T>>
      * @param max max value (inclusive)
      */
     public abstract void randomize(double min, double max);
+
+    public String toString()
+    {
+        return "( " + x().toString() + ", " + y().toString() + ", " + z().toString() + " )";
+    }
 }

@@ -49,6 +49,7 @@ public abstract class GameObject implements Updatable, Renderable, Deletable
     public Vector<?> getPosition() {
         return position;
     }
+    public RenderVector getRenderCoordinates() {return position.getRenderCoordinates(scene.getZoomLevel());}
 
     protected void drawObject(Graphics g, RenderVector renderCoords, int renderSize)
     {

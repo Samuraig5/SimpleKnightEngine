@@ -4,67 +4,31 @@ import MathHelper.Randoms;
 
 import java.awt.*;
 
-public class RenderVector extends Vector<Integer>
+public class RenderVector extends IntegerVector
 {
-    private final Integer[] coordinates = {0,0,0};
-
-    @Override
-    public Integer zero() {
-        return 0;
-    }
-
-    @Override
-    public Integer[] toArray() {
-        return coordinates;
-    }
-
-    @Override
-    public void set(Integer x, Integer y, Integer z) {
-        coordinates[0] = x;
-        coordinates[1] = y;
-        coordinates[2] = z;
-    }
-
-    @Override
-    public Integer x() {
-        return coordinates[0];
-    }
-
-    @Override
-    public Integer y() {
-        return coordinates[1];
-    }
-
-    @Override
-    public Integer z() {
-        return coordinates[2];
-    }
-
     @Override
     public RenderVector getRenderCoordinates(double zoom) {
         return this;
     }
 
     @Override
-    public void add(Vector<?> vector) {
-        int x = coordinates[0] + (Integer) vector.x();
-        int y = coordinates[1] + (Integer) vector.y();
-        int z = coordinates[2] + (Integer) vector.z();
-
-        set(x,y,z);
-    }
-
-    @Override
-    public void randomize(double min, double max) {
-        for (int i = 0; i < 3; i++) {
-            coordinates[i] = (int) Randoms.range(min, max, true);
-        }
+    public double distance(Vector<?> vector) {
+        RenderVector other = vector.getRenderCoordinates(1);
+        return Math.sqrt(Math.pow(x() - other.x(), 2) +
+                        Math.pow(y() - other.y(), 2) +
+                        Math.pow(z() - other.z(), 2));
     }
 
     public static RenderVector create(Integer x, Integer y, Integer z)
     {
         RenderVector vector = new RenderVector();
         vector.set(x,y,z);
+        return vector;
+    }
+    public static RenderVector create(Integer x, Integer y)
+    {
+        RenderVector vector = new RenderVector();
+        vector.set(x,y,0);
         return vector;
     }
     public static RenderVector create(Point p)

@@ -99,7 +99,6 @@ public class BasicCameraControls extends BasicControls
 
         RenderVector deltaVector = RenderVector.create(deltaX, deltaY, 0);
 
-        // Update camera offset
         scene.changeCameraOffset(deltaVector);
 
         // Update last mouse position
