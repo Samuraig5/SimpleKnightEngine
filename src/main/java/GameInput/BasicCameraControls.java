@@ -93,6 +93,8 @@ public class BasicCameraControls extends BasicControls
     public void mouseDragged(MouseEvent e) {
         RenderVector currentMousePosition = RenderVector.create(e.getPoint());
 
+        if (lastMousePosition == null) {lastMousePosition = RenderVector.create(0,0,0);}
+
         // Calculate the movement delta
         int deltaX = currentMousePosition.x() - lastMousePosition.x();
         int deltaY = currentMousePosition.y() - lastMousePosition.y();

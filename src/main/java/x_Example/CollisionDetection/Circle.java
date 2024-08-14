@@ -27,11 +27,6 @@ public class Circle extends FreeSolid
     }
 
     @Override
-    public Vector<?> getMovement() {
-        return null;
-    }
-
-    @Override
     public void render(Graphics g, Scene scene) {
 
         double radZoomed = radius* scene.getZoomLevel();

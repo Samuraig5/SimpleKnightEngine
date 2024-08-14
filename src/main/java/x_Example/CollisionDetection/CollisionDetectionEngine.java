@@ -10,5 +10,6 @@ public class CollisionDetectionEngine extends SimpleKnightEngine {
     @Override
     public void setUp() {
         setScene(new CollisionDetectionScene(this));
+        gameClock.startClock();
     }
 }

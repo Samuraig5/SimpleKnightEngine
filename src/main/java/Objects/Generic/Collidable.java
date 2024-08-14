@@ -16,7 +16,5 @@ public interface Collidable {
     void collision(Collidable other);
 
     Vector<?> getPosition();
-
-    Vector<?> getMovement();
 }
 

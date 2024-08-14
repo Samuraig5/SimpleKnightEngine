@@ -11,6 +11,16 @@ public class RenderVector extends IntegerVector
         return this;
     }
 
+    public IntegerVector getWorldCoordinates(double zoom)
+    {
+        IntegerVector integerVector = new IntegerVector();
+        int x = (int) (x() / zoom);
+        int y = (int) (y() / zoom);
+        int z = (int) (z() / zoom);
+        integerVector.set(x,y,z);
+        return integerVector;
+    }
+
     @Override
     public double distance(Vector<?> vector) {
         RenderVector other = vector.getRenderCoordinates(1);
